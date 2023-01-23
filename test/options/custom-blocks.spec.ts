@@ -19,6 +19,11 @@ describe('customBlocks', () => {
         <docs>
         // My Docs Block
         </docs>
+        <func>
+        export default function(comp) {
+          comp.func = {};
+        }
+        </func>
       `
         ),
         vue({
@@ -63,5 +68,11 @@ describe('customBlocks', () => {
 
     expect(code).toEqual(expect.stringContaining('My Custom Block'))
     expect(code).not.toEqual(expect.stringContaining('My Docs Block'))
+  })
+  it('export default function', async () => {
+    const { code } = await setup({
+      customBlocks: ['func']
+    })
+    expect(code).toEqual(expect.stringMatching(/typeof .+_func_.+ === 'function'/))
   })
 })

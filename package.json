@@ -1,6 +1,6 @@
 {
   "name": "@yfwz100/rollup-plugin-vue2",
-  "version": "1.0.0",
+  "version": "5.1.9",
   "description": "Roll .vue files, forked from an older version of rollup-plugin-vue targeting Vue 2.",
   "author": "Zhi <yfwz100@yeah.net>",
   "bugs": {

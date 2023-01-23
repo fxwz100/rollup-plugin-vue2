@@ -266,7 +266,7 @@ export default function vue(opts: Partial<VuePluginOptions> = {}): Plugin {
   if (opts.css === false) d('Running in CSS extract mode')
 
   const getCompiler = ({ scopeId }: { scopeId?: string }) => {
-    const options: VueCompilerOptions = { ...opts }
+    const options: VueCompilerOptions = { ...opts } as VueCompilerOptions
 
     options.template = {
       ...options.template!,
@@ -482,16 +482,23 @@ export default function vue(opts: Partial<VuePluginOptions> = {}): Plugin {
 
         descriptor.customBlocks.forEach((block, index) => {
           if (!isAllowed(block.type)) return
+          const customBlockName = `__customBlock$${index}`
+          const customBlockRefId = createVuePartRequest(
+            filename,
+            (typeof block.attrs.lang === 'string' && block.attrs.lang) ||
+              createVuePartRequest.defaultLang[block.type] ||
+              block.type,
+            block.type || 'customBlocks',
+            index
+          )
           result.code +=
             '\n' +
-            `export * from '${createVuePartRequest(
-              filename,
-              (typeof block.attrs.lang === 'string' && block.attrs.lang) ||
-                createVuePartRequest.defaultLang[block.type] ||
-                block.type,
-              'customBlocks',
-              index
-            )}'`
+            `export * from '${customBlockRefId}';
+            import * as ${customBlockName} from '${customBlockRefId}';
+            if (typeof ${customBlockName}['default'] === 'function') {
+              ${customBlockName}['default'](__vue_component__);
+            }
+            `
         })
 
         dT(

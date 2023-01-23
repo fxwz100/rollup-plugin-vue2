@@ -111,7 +111,7 @@ export function resolveVuePart(
 
   if (!descriptor) throw Error('File not processed yet, ' + filename)
 
-  const blocks = descriptor[meta.type]
+  const blocks = descriptor[meta.type] || descriptor.customBlocks.find(b => b.type === meta.type)
   const block = Array.isArray(blocks) ? blocks[meta.index as number] : blocks
 
   if (!block)
