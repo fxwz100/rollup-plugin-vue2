@@ -1,6 +1,19 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [6.0.0](https://github.com/vuejs/rollup-plugin-vue/compare/v5.1.9...v6.0.0) (2023-01-25)
+
+
+### Features
+
+* call custom block function if exported. ([3854b6c](https://github.com/vuejs/rollup-plugin-vue/commit/3854b6ce64d6f27cdc5c04d3031bd969a5c49d63))
+
+
+### Bug Fixes
+
+* [#282](https://github.com/vuejs/rollup-plugin-vue/issues/282) add shadow mode ([#376](https://github.com/vuejs/rollup-plugin-vue/issues/376)) ([2b6994c](https://github.com/vuejs/rollup-plugin-vue/commit/2b6994c1542744db19eb84199848b46808227b39))
+* **types:** make template options opional ([#374](https://github.com/vuejs/rollup-plugin-vue/issues/374)) ([e4b17cd](https://github.com/vuejs/rollup-plugin-vue/commit/e4b17cd1f6a078c14ef5cabfccfc337b2542bc23))
 
 <a name="5.1.9"></a>
 ## [5.1.9](https://github.com/vuejs/rollup-plugin-vue/compare/v5.1.8...v5.1.9) (2020-05-22)
